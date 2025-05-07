@@ -5,6 +5,9 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
+#include <QScreen>
+#include <QGuiApplication>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,6 +33,15 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Multi-Page MainWindow");
     resize(600, 400);
 
+    // 화면 해상도 기반 크기 계산
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QSize screenSize = screen->availableGeometry().size();
+
+    // 화면의 80%를 기준으로 하되, 10:8 비율 유지
+    int width = screenSize.width() * 0.8;
+    int height = screenSize.height() * 0.8;  // 10:8 비율
+
+    setFixedSize(width, height);  // 창 크기 고정
     // 메뉴 동작 연결
     connect(settingAction, &QAction::triggered, [=]() {
         stackedWidget->setCurrentIndex(0);
