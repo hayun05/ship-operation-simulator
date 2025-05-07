@@ -1,0 +1,45 @@
+#include <QWidget>
+#include <QPushButton>
+#include <QSlider>
+#include <QLabel>
+#include <QVBoxLayout>
+
+class SettingsWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    SettingsWidget(QWidget *parent = nullptr) : QWidget(parent)
+    {
+        QVBoxLayout *layout = new QVBoxLayout(this);
+
+        QLabel *label = new QLabel("Adjust Screen Brightness:", this);
+        layout->addWidget(label);
+
+        QSlider *slider = new QSlider(Qt::Horizontal, this);
+        slider->setRange(0, 100);  // 0 to 100 for brightness
+        layout->addWidget(slider);
+
+        QPushButton *applyButton = new QPushButton("Apply Settings", this);
+        layout->addWidget(applyButton);
+
+        connect(slider, &QSlider::valueChanged, this, &SettingsWidget::onSliderValueChanged);
+        connect(applyButton, &QPushButton::clicked, this, &SettingsWidget::onApplySettings);
+    }
+
+signals:
+    void settingsChanged(int brightness);
+
+private slots:
+    void onSliderValueChanged(int value)
+    {
+        // 설정 값이 변경되면 화면에 반영할 신호를 발행
+        emit settingsChanged(value);
+    }
+
+    void onApplySettings()
+    {
+        // 설정을 적용할 때 필요한 작업
+        qDebug("Settings Applied!");
+    }
+};
