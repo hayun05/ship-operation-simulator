@@ -6,7 +6,7 @@
 class DisplayPage : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit DisplayPage(QWidget *parent = nullptr);
 };

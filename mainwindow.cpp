@@ -1,12 +1,14 @@
 #include "mainwindow.h"
 #include "settingpage.h"
 #include "displaypage.h"
+#include "controller.h"
 
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
 #include <QScreen>
 #include <QGuiApplication>
+#include <QObject>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,12 +18,14 @@ MainWindow::MainWindow(QWidget *parent)
     QMenu *menu = menuBar()->addMenu("Menu");
     QAction *settingAction = new QAction("Setting", this);
     QAction *displayAction = new QAction("Display", this);
+
     menu->addAction(settingAction);
     menu->addAction(displayAction);
 
     // 페이지 생성
     SettingPage *settingPage = new SettingPage(this);
     DisplayPage *displayPage = new DisplayPage(this);
+    Controller *controller = new Controller();
 
     // QStackedWidget 설정
     stackedWidget = new QStackedWidget(this);
@@ -50,4 +54,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(displayAction, &QAction::triggered, [=]() {
         stackedWidget->setCurrentIndex(1);
     });
+
+    QObject::connect(settingPage, &SettingPage::checkedRain, controller, &Controller::rainChecked);
 }
