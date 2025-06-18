@@ -1,4 +1,5 @@
 #include "settingpage.h"
+#include "controller.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -33,6 +34,8 @@ SettingPage::SettingPage(QWidget *parent)
     Blb1= new QLabel("배 종류 선택", this);
     boatSelcet = new QComboBox(this);
 
+    boatSelcet->addItems({"고속정", "어선", "잠수함"});
+
     BLayout1->addWidget(Blb1);
     BLayout1->addWidget(boatSelcet);
     BLayout1->addStretch(); // 수평 스페이서 추가
@@ -60,17 +63,19 @@ SettingPage::SettingPage(QWidget *parent)
     BLayout3 = new QHBoxLayout();
 
     Blb3 = new QLabel("배 속도 조정", this);
-    boatSpeed = new QSlider(this);
 
-    boatSpeed->setMinimum(100);
-    boatSpeed->setMinimun(1);
+    boatSpeed = new QSlider(Qt::Horizontal, this);
+
+    boatSpeed->setMaximum(100);
+    boatSpeed->setMinimum(1);
     boatSpeed->setValue(20);
 
     BLayout3->addWidget(Blb3);
-    BLayout3->addWidget(boatSpeed;
+    BLayout3->addWidget(boatSpeed);
     BLayout3->addStretch(); // 수평 스페이서 추가
 
     boatLayout ->addLayout(BLayout3);
+
 
     //boatSetting Ending
     boatGroup->setLayout(boatLayout);
@@ -89,19 +94,41 @@ SettingPage::SettingPage(QWidget *parent)
 
     rain = new QCheckBox("비 켜기", this);
 
-    
-
     PLayout1->addWidget(rain);
     PLayout1->addStretch();
 
     prefLayout->addLayout(PLayout1);
 
+    PLayout1 = new QHBoxLayout();
+
+    rain = new QCheckBox("비 켜기", this);
+
+
+
+    //Preferences' second layout : 비 상태 점검
+    PLayout2 = new QHBoxLayout();
+    Plb1 = new QLabel("바람 세기");
+
+    wind = new QSlider(Qt::Horizontal ,this);
+
+    wind->setMinimum(0);
+    wind->setMaximum(100);
+    wind->setValue(0);
+
+    PLayout2->addWidget(Plb1);
+    PLayout2->addWidget(wind);
+    PLayout2->addStretch();
+
+    prefLayout->addLayout(PLayout2);
 
     prefGroup->setLayout(prefLayout);
 
 
-    connect(ui->rain, &QCheckBox::toggled, this, &SettingPage::checkedRain);
-    connect(ui->boatSpeed, &QSlider::valueChanged, this, &SettingPage::onSpeedChanged);
+    connect(rain, &QCheckBox::toggled, this, &SettingPage::checkedRain);
+    connect(boatSpeed, &QSlider::valueChanged, this, &SettingPage::speedChanged);
+    connect(boatSelcet, &QComboBox::currentIndexChanged, this, &SettingPage::selectBoat);
+    connect(boatSize, &QSpinBox::valueChanged, this, &SettingPage::sizeChecked);
+    connect(wind, &QSlider::valueChanged, this, &SettingPage::windChecked);
 
     // 그룹을 메인 레이아웃에 추가
     mainLayout->addWidget(boatGroup);
@@ -113,9 +140,21 @@ SettingPage::SettingPage(QWidget *parent)
 }
 
 void SettingPage::checkedRain(bool check){
-    emit onRain(bool check);
+    emit onRain(check);
 }
 
-void SettingPade::onSpeedChanged(int speed){
-    emit speedCahnged(int speed);
+void SettingPage::speedChanged(int speed){
+    emit onSpeedChanged(speed);
+}
+
+void SettingPage::selectBoat(int index){
+    emit onSelectBoat(index);
+}
+
+void SettingPage::sizeChecked(int size){
+    emit onSizeChecked(size);
+}
+
+void SettingPage::windChecked(int wind){
+    emit onWind(wind);
 }
