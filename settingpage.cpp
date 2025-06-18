@@ -89,9 +89,7 @@ SettingPage::SettingPage(QWidget *parent)
 
     rain = new QCheckBox("비 켜기", this);
 
-    connect(rain, &QCheckBox::toggled, this, &SettingPage::checkedRain);
-    connect(ui->boatSpeed, &QSlider::speedChanged, this, &SettingPage::onSpeedChanged);
-
+    
 
     PLayout1->addWidget(rain);
     PLayout1->addStretch();
@@ -102,17 +100,22 @@ SettingPage::SettingPage(QWidget *parent)
     prefGroup->setLayout(prefLayout);
 
 
+    connect(ui->rain, &QCheckBox::toggled, this, &SettingPage::checkedRain);
+    connect(ui->boatSpeed, &QSlider::valueChanged, this, &SettingPage::onSpeedChanged);
 
     // 그룹을 메인 레이아웃에 추가
     mainLayout->addWidget(boatGroup);
     mainLayout->addWidget(prefGroup);
     setLayout(mainLayout);
+
+
+    
 }
 
-void SettingPage::checkedRain(bool Rain){
-
+void SettingPage::checkedRain(bool check){
+    emit onRain(bool check);
 }
 
 void SettingPade::onSpeedChanged(int speed){
-
+    emit speedCahnged(int speed);
 }
