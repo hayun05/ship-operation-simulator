@@ -40,7 +40,6 @@ SettingPage::SettingPage(QWidget *parent)
     boatLayout->addLayout(BLayout1);
 
 
-
     //boatSetting second layout : 배 크기 조정
     BLayout2 = new QHBoxLayout();
 
@@ -52,6 +51,26 @@ SettingPage::SettingPage(QWidget *parent)
     BLayout2->addStretch(); // 수평 스페이서 추가
 
     boatLayout ->addLayout(BLayout2);
+
+    //boatSetting Ending
+    boatGroup->setLayout(boatLayout);
+
+
+    //boatSetting second layout : 배 속도 조정
+    BLayout3 = new QHBoxLayout();
+
+    Blb3 = new QLabel("배 속도 조정", this);
+    boatSpeed = new QSlider(this);
+
+    boatSpeed->setMinimum(100);
+    boatSpeed->setMinimun(1);
+    boatSpeed->setValue(20);
+
+    BLayout3->addWidget(Blb3);
+    BLayout3->addWidget(boatSpeed;
+    BLayout3->addStretch(); // 수평 스페이서 추가
+
+    boatLayout ->addLayout(BLayout3);
 
     //boatSetting Ending
     boatGroup->setLayout(boatLayout);
@@ -71,6 +90,7 @@ SettingPage::SettingPage(QWidget *parent)
     rain = new QCheckBox("비 켜기", this);
 
     connect(rain, &QCheckBox::toggled, this, &SettingPage::checkedRain);
+    connect(ui->boatSpeed, &QSlider::speedChanged, this, &SettingPage::onSpeedChanged);
 
 
     PLayout1->addWidget(rain);
@@ -89,6 +109,10 @@ SettingPage::SettingPage(QWidget *parent)
     setLayout(mainLayout);
 }
 
-void SettingPage::checkedRain(bool check){
+void SettingPage::checkedRain(bool Rain){
+
+}
+
+void SettingPade::onSpeedChanged(int speed){
 
 }
