@@ -2,6 +2,7 @@
 #define DISPLAY3D_H
 
 #include <QWidget>
+#include <QVBoxLayout>
 #include <QTimer>
 #include <Qt3DExtras/Qt3DWindow>
 #include <Qt3DCore/QEntity>
@@ -34,6 +35,8 @@ private:
 
     QList<RainDrop*> rainDrops;
     QTimer *rainTimer;
+
+    QVBoxLayout *layout;
 
     void createScene();
     void createRain();
