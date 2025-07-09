@@ -1,4 +1,5 @@
 #include "displaypage.h"
+#include "display3d.h"
 #include <QVBoxLayout>
 #include <QLabel>
 
