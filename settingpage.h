@@ -10,7 +10,6 @@
 #include <QSpacerItem>
 #include <QSpinBox>
 #include <QCheckBox>
-#include <QMessageBox>
 #include <QSlider>
 
 class SettingPage : public QWidget
@@ -19,7 +18,6 @@ class SettingPage : public QWidget
 
 public:
     explicit SettingPage(QWidget *parent = nullptr);
-
 
 private:
     QGroupBox *boatGroup;
@@ -38,32 +36,29 @@ private:
     QLabel* Blb1;
     QLabel* Blb2;
     QLabel* Blb3;
-
     QLabel* Plb1;
 
     QSpinBox* boatSize;
-    QComboBox* boatSelcet;
+    QComboBox* boatSelect;
     QSlider* boatSpeed;
     QSlider* wind;
-
     QCheckBox* rain;
 
-
-
 signals:
-    void onRain(bool check);
-    void onSpeedChanged(int speed);
-    void onSelectBoat(int index);
-    void onSizeChecked(int size);
-    void onWind(int wind);
+    void rainToggled(bool);
+    void speedValueChanged(int);
+    void boatTypeChanged(int);
+    void sizeValueChanged(int);
+    void windValueChanged(int);
 
 private slots:
-    void checkedRain(bool check);
-    void speedChanged(int speed);
-    void selectBoat(int index);
-    void sizeChecked(int size);
-    void windChecked(int wind);
+    void handleRain(bool checked);
+    void handleSpeed(int speed);
+    void handleBoatType(int index);
+    void handleSize(int size);
+    void handleWind(int value);
 
 };
+
 
 #endif // SETTINGPAGE_H
