@@ -4,12 +4,17 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
+class SettingPage;
+class DisplayPage;
+class Controller;
+class Display3D;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
 
 private:
     QStackedWidget *stackedWidget;
