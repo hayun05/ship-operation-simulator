@@ -1,4 +1,7 @@
 #include "display3d.h"
+
+#include <QVBoxLayout>
+
 #include <Qt3DRender/QCamera>
 
 Display3D::Display3D(QWidget *parent) : QWidget(parent) {
@@ -7,7 +10,7 @@ Display3D::Display3D(QWidget *parent) : QWidget(parent) {
     container->setMinimumSize(400, 300);
     container->setFocusPolicy(Qt::StrongFocus);
 
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout = new QVBoxLayout(this);
     layout->addWidget(container);
     setLayout(layout);
 
