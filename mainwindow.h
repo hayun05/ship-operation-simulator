@@ -7,7 +7,7 @@
 class SettingPage;
 class DisplayPage;
 class Controller;
-class Display3D;
+class Display2D;
 
 class MainWindow : public QMainWindow
 {
