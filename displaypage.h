@@ -1,7 +1,7 @@
 #ifndef DISPLAYPAGE_H
 #define DISPLAYPAGE_H
 
-class Display3D; // 전방 선언
+class Display2D; // 전방 선언
 
 #include <QWidget>
 
@@ -11,10 +11,10 @@ class DisplayPage : public QWidget
 
 public:
     explicit DisplayPage(QWidget *parent = nullptr);
-    Display3D *get3DWidget();  // 외부에서 접근용
+    Display2D *get2DWidget();  // 외부에서 접근용
 
 private:
-    Display3D *display3d;
+    Display2D *display2d;
 };
 
 #endif // DISPLAYPAGE_H
