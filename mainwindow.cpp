@@ -2,7 +2,7 @@
 #include "settingpage.h"
 #include "displaypage.h"
 #include "controller.h"
-#include "display3d.h"
+#include "display2d.h"
 
 #include <QMenuBar>
 #include <QMenu>
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     SettingPage *settingPage = new SettingPage(this);
     DisplayPage *displayPage = new DisplayPage(this);
     Controller *controller = new Controller();
-    Display3D *display3d = new Display3D();
+    Display2D *display2d = new Display2D();
 
     // QStackedWidget 설정
     stackedWidget = new QStackedWidget(this);
@@ -74,11 +74,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // controller - display3D 연결
     QObject::connect(controller, &Controller::onSpeedChanged,
-                     display3d, &Display3D::updateSpeed);
+                     display2d, &Display2D::updateSpeed);
 
     QObject::connect(controller, &Controller::onRain,
-                     display3d, &Display3D::updateRain);
+                     display2d, &Display2D::updateRain);
 
     QObject::connect(controller, &Controller::onSelectBoat,
-                     display3d, &Display3D::updateBoat);
+                     display2d, &Display2D::updateBoat);
 }
