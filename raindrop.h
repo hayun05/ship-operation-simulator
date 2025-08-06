@@ -1,20 +1,18 @@
 #ifndef RAINDROP_H
 #define RAINDROP_H
 
-#include <Qt3DCore/QEntity>
-#include <Qt3DCore/QTransform>
-#include <Qt3DExtras/QCylinderMesh>
-#include <Qt3DExtras/QPhongMaterial>
+#include <QPainter>
+#include <QRandomGenerator>
 
-class RainDrop : public Qt3DCore::QEntity {
+class RainDrop {
 public:
-    explicit RainDrop(Qt3DCore::QEntity *parent = nullptr);
-    void fall();
-    void reset();
+    RainDrop(int x, int y);
+    void fall(int maxWidth, int maxHeight);
+    void draw(QPainter &painter) const;
 
 private:
-    Qt3DCore::QTransform *transform;
-    float y;
+    int x, y;
+    int speed;
 };
 
 #endif // RAINDROP_H
