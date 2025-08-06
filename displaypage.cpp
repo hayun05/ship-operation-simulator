@@ -1,5 +1,5 @@
 #include "displaypage.h"
-#include "display3d.h"
+#include "display2d.h"
 #include <QVBoxLayout>
 #include <QLabel>
 
@@ -9,15 +9,15 @@ DisplayPage::DisplayPage(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(this);
 
     QLabel *label = new QLabel("Display Page", this);
-    display3d = new Display3D(this); // 3D 위젯 생성
+    display2d = new Display2D(this); // 3D 위젯 생성
 
     layout->addWidget(label);
-    layout->addWidget(display3d);  // 3D 위젯 추가
+    layout->addWidget(display2d);  // 3D 위젯 추가
     layout->addStretch();
 
     setLayout(layout);
 }
 
-Display3D* DisplayPage::get3DWidget() {
-    return display3d;
+Display2D* DisplayPage::get2DWidget() {
+    return display2d;
 }
