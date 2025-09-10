@@ -1,0 +1,26 @@
+﻿  WinMain.cpp
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,1): error C2236: 예기치 않은 토큰 'class'입니다. ';'이 없습니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2059: 구문 오류: '{'
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2143: 구문 오류: ';'이(가) '{' 앞에 없습니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2447: '{': 함수 헤더가 없습니다. 이전 스타일의 형식 목록입니까?
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\core\Application.h(45,14): error C3646: 'm_renderer': 알 수 없는 재정의 지정자입니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\core\Application.h(45,24): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+  Application.cpp
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,1): error C2236: 예기치 않은 토큰 'class'입니다. ';'이 없습니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2059: 구문 오류: '{'
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2143: 구문 오류: ';'이(가) '{' 앞에 없습니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\graphics\Renderer.h(3,16): error C2447: '{': 함수 헤더가 없습니다. 이전 스타일의 형식 목록입니까?
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\core\Application.h(45,14): error C3646: 'm_renderer': 알 수 없는 재정의 지정자입니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\core\Application.h(45,24): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\core\Application.cpp(207,5): error C2065: 'm_renderer': 선언되지 않은 식별자입니다.
+  Camera.cpp
+  Renderer.cpp
+  InputManager.cpp
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\input\InputManager.cpp(3,15): error C2533: 'InputManager::{ctor}': 생성자에서 반환 형식을 사용할 수 없습니다.
+  BoatPhysics.cpp
+  UIManager.cpp
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\ui\UIManager.cpp(11,17): error C2039: 'RenderScene': 'UIManager'의 멤버가 아닙니다.
+C:\Users\user\Documents\Visual Studio 2022\SO_s\SO_s\src\ui\UIManager.h(3): message : 'UIManager' 선언을 참조하십시오.
+  Logger.cpp
+  Math.cpp
+  코드를 생성하고 있습니다...
